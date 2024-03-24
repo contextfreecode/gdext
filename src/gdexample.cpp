@@ -13,6 +13,11 @@ void GDExample::_bind_methods() {
         "GDExample", PropertyInfo(Variant::FLOAT, "amplitude"), "set_amplitude",
         "get_amplitude"
     );
+    // Position changed
+    ADD_SIGNAL(MethodInfo(
+        "position_changed", PropertyInfo(Variant::OBJECT, "node"),
+        PropertyInfo(Variant::VECTOR2, "new_pos")
+    ));
     // Speed
     ClassDB::bind_method(D_METHOD("get_speed"), &GDExample::get_speed);
     ClassDB::bind_method(
@@ -42,6 +47,12 @@ void GDExample::_process(double delta) {
         amplitude + (amplitude * cos(time_passed * 1.5))
     );
     set_position(new_position);
+    // Track for signal.
+    time_emit += delta;
+    if (time_emit > 1.0) {
+        emit_signal("position_changed", this, new_position);
+        time_emit = 0.0;
+    }
 }
 
 double GDExample::get_amplitude() const { return amplitude; }
