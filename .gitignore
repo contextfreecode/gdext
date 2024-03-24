@@ -1,2 +1,5 @@
 extension_api.json
 godot-cpp/
+*.os
+.sconsign.dblite
+*.so
