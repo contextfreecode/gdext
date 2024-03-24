@@ -5,6 +5,8 @@
 [node name="Main" type="Node"]
 
 [node name="GDExample" type="GDExample" parent="."]
-position = Vector2(14.3386, 6.69737)
+amplitude = 100.0
+speed = 0.5
+position = Vector2(118.312, 199.048)
 texture = ExtResource("1_ssr4w")
 centered = false
