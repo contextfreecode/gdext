@@ -8,19 +8,19 @@ namespace godot {
 class GDExample : public Sprite2D {
     GDCLASS(GDExample, Sprite2D)
 
-private:
+  private:
     double time_passed;
 
-protected:
+  protected:
     static void _bind_methods();
 
-public:
+  public:
     GDExample();
     ~GDExample();
 
     void _process(double delta) override;
 };
 
-}
+} // namespace godot
 
 #endif
