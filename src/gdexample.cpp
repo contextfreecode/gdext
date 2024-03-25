@@ -1,5 +1,6 @@
 #include "gdexample.h"
 #include <godot_cpp/core/class_db.hpp>
+#include <godot_cpp/classes/engine.hpp>
 
 using namespace godot;
 
@@ -41,6 +42,9 @@ GDExample::~GDExample() {
 }
 
 void GDExample::_process(double delta) {
+    if (Engine::get_singleton()->is_editor_hint()) {
+        return;
+    }
     time_passed += speed * delta;
     Vector2 new_position = Vector2(
         amplitude + (amplitude * sin(time_passed * 2.0)),
