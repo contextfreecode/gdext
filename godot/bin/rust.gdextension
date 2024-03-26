@@ -5,5 +5,5 @@ compatibility_minimum = "4.2"
 
 [libraries]
 
-linux.debug.x86_64 = "res://../rust/target/debug/libgdrust.so"
-linux.release.x86_64 = "res://../rust/target/release/libgdrust.so"
+linux.debug.x86_64 = "res://../rust/target/debug/librustshipper.so"
+linux.release.x86_64 = "res://../rust/target/release/librustshipper.so"

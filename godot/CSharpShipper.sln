@@ -1,6 +1,6 @@
 ﻿Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GdExt Demo", "GdExt Demo.csproj", "{349D21C6-18CD-460B-A086-B7831BAC5A7B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharpShipper", "CSharpShipper.csproj", "{349D21C6-18CD-460B-A086-B7831BAC5A7B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -3,10 +3,10 @@
 
 #include <godot_cpp/classes/sprite2d.hpp>
 
-namespace godot {
+namespace shipper {
 
-class CppShip : public Sprite2D {
-    GDCLASS(CppShip, Sprite2D)
+class CppShip : public godot::Sprite2D {
+    GDCLASS(CppShip, godot::Sprite2D)
 
   private:
     double amplitude;

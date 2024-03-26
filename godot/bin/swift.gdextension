@@ -5,5 +5,5 @@ compatibility_minimum = "4.2"
 
 [libraries]
 
-linux.debug.x86_64 = "res://../swift/.build/debug/libGdSwift.so"
-linux.release.x86_64 = "res://../swift/.build/release/libGdSwift.so"
+linux.debug.x86_64 = "res://../swift/.build/debug/libSwiftShipper.so"
+linux.release.x86_64 = "res://../swift/.build/release/libSwiftShipper.so"

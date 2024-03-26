@@ -23,6 +23,10 @@ position = Vector2(524, 343)
 texture = ExtResource("3_ievdu")
 script = ExtResource("3_kchdg")
 
+[node name="RustShip" type="RustShip" parent="."]
+position = Vector2(1155, 93)
+texture = ExtResource("8_tqcs3")
+
 [node name="SwiftShip" type="SwiftShip" parent="."]
 position = Vector2(139, 485)
 texture = ExtResource("5_0susi")
@@ -31,7 +35,3 @@ texture = ExtResource("5_0susi")
 position = Vector2(1094, 610)
 texture = ExtResource("1_ssr4w")
 script = ExtResource("4_ppds8")
-
-[node name="RustShip" type="RustShip" parent="."]
-position = Vector2(1155, 93)
-texture = ExtResource("8_tqcs3")
