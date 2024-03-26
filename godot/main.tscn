@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bi1jfdeiupk1y" path="res://icon.svg" id="1_ssr4w"]
 [ext_resource type="Texture2D" uid="uid://cf3ihs80fach" path="res://assets/cpp.png" id="2_5a4du"]
 [ext_resource type="Texture2D" uid="uid://dop8x0tb7s627" path="res://assets/csharp.png" id="3_ievdu"]
-[ext_resource type="Script" path="res://Thing.cs" id="3_kchdg"]
+[ext_resource type="Script" path="res://CSharpShip.cs" id="3_kchdg"]
 [ext_resource type="Script" path="res://Player.gd" id="4_ppds8"]
 [ext_resource type="Texture2D" uid="uid://d4fr8e0ijooen" path="res://assets/swift.png" id="5_0susi"]
 [ext_resource type="Texture2D" uid="uid://bc746y2bkxphn" path="res://assets/rust.png" id="8_tqcs3"]
@@ -12,13 +12,13 @@
 [node name="Main" type="Node"]
 script = ExtResource("1_llsrq")
 
-[node name="GDExample" type="GDExample" parent="."]
+[node name="CppShip" type="CppShip" parent="."]
 amplitude = 100.0
 speed = 0.5
 texture = ExtResource("2_5a4du")
 centered = false
 
-[node name="Thing" type="Sprite2D" parent="."]
+[node name="CSharpShip" type="Sprite2D" parent="."]
 position = Vector2(524, 343)
 texture = ExtResource("3_ievdu")
 script = ExtResource("3_kchdg")
@@ -35,5 +35,3 @@ script = ExtResource("4_ppds8")
 [node name="RustShip" type="RustShip" parent="."]
 position = Vector2(1155, 93)
 texture = ExtResource("8_tqcs3")
-
-[connection signal="position_changed" from="GDExample" to="." method="_on_gd_example_position_changed"]

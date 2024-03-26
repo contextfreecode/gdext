@@ -2,9 +2,11 @@
 
 entry_symbol = "example_library_init"
 compatibility_minimum = "4.2"
-reloadable = true
 
 [libraries]
+
+linux.debug.x86_64 = "res://../cpp/bin/libgdexample.linux.template_debug.x86_64.so"
+linux.release.x86_64 = "res://../cpp/bin/libgdexample.linux.template_release.x86_64.so"
 
 macos.debug = "res://bin/libgdexample.macos.template_debug.framework"
 macos.release = "res://bin/libgdexample.macos.template_release.framework"
@@ -12,8 +14,6 @@ windows.debug.x86_32 = "res://bin/libgdexample.windows.template_debug.x86_32.dll
 windows.release.x86_32 = "res://bin/libgdexample.windows.template_release.x86_32.dll"
 windows.debug.x86_64 = "res://bin/libgdexample.windows.template_debug.x86_64.dll"
 windows.release.x86_64 = "res://bin/libgdexample.windows.template_release.x86_64.dll"
-linux.debug.x86_64 = "res://bin/libgdexample.linux.template_debug.x86_64.so"
-linux.release.x86_64 = "res://bin/libgdexample.linux.template_release.x86_64.so"
 linux.debug.arm64 = "res://bin/libgdexample.linux.template_debug.arm64.so"
 linux.release.arm64 = "res://bin/libgdexample.linux.template_release.arm64.so"
 linux.debug.rv64 = "res://bin/libgdexample.linux.template_debug.rv64.so"

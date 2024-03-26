@@ -5,8 +5,8 @@
 
 namespace godot {
 
-class GDExample : public Sprite2D {
-    GDCLASS(GDExample, Sprite2D)
+class CppShip : public Sprite2D {
+    GDCLASS(CppShip, Sprite2D)
 
   private:
     double amplitude;
@@ -18,8 +18,8 @@ class GDExample : public Sprite2D {
     static void _bind_methods();
 
   public:
-    GDExample();
-    ~GDExample();
+    CppShip();
+    ~CppShip();
 
     double get_amplitude() const;
     void set_amplitude(const double p_amplitude);

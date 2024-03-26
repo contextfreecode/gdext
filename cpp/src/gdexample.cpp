@@ -4,14 +4,14 @@
 
 using namespace godot;
 
-void GDExample::_bind_methods() {
+void CppShip::_bind_methods() {
     // Amplitude
-    ClassDB::bind_method(D_METHOD("get_amplitude"), &GDExample::get_amplitude);
+    ClassDB::bind_method(D_METHOD("get_amplitude"), &CppShip::get_amplitude);
     ClassDB::bind_method(
-        D_METHOD("set_amplitude", "p_amplitude"), &GDExample::set_amplitude
+        D_METHOD("set_amplitude", "p_amplitude"), &CppShip::set_amplitude
     );
     ClassDB::add_property(
-        "GDExample", PropertyInfo(Variant::FLOAT, "amplitude"), "set_amplitude",
+        "CppShip", PropertyInfo(Variant::FLOAT, "amplitude"), "set_amplitude",
         "get_amplitude"
     );
     // Position changed
@@ -20,28 +20,28 @@ void GDExample::_bind_methods() {
         PropertyInfo(Variant::VECTOR2, "new_pos")
     ));
     // Speed
-    ClassDB::bind_method(D_METHOD("get_speed"), &GDExample::get_speed);
+    ClassDB::bind_method(D_METHOD("get_speed"), &CppShip::get_speed);
     ClassDB::bind_method(
-        D_METHOD("set_speed", "p_speed"), &GDExample::set_speed
+        D_METHOD("set_speed", "p_speed"), &CppShip::set_speed
     );
     ClassDB::add_property(
-        "GDExample",
+        "CppShip",
         PropertyInfo(Variant::FLOAT, "speed", PROPERTY_HINT_RANGE, "0,20,0.01"),
         "set_speed", "get_speed"
     );
 }
 
-GDExample::GDExample() {
+CppShip::CppShip() {
     amplitude = 10.0;
     speed = 1.0;
     time_passed = 0.0;
 }
 
-GDExample::~GDExample() {
+CppShip::~CppShip() {
     // Add your cleanup here.
 }
 
-void GDExample::_process(double delta) {
+void CppShip::_process(double delta) {
     if (Engine::get_singleton()->is_editor_hint()) {
         return;
     }
@@ -59,12 +59,12 @@ void GDExample::_process(double delta) {
     }
 }
 
-double GDExample::get_amplitude() const { return amplitude; }
+double CppShip::get_amplitude() const { return amplitude; }
 
-void GDExample::set_amplitude(const double p_amplitude) {
+void CppShip::set_amplitude(const double p_amplitude) {
     amplitude = p_amplitude;
 }
 
-double GDExample::get_speed() const { return speed; }
+double CppShip::get_speed() const { return speed; }
 
-void GDExample::set_speed(const double p_speed) { speed = p_speed; }
+void CppShip::set_speed(const double p_speed) { speed = p_speed; }

@@ -1,4 +1,5 @@
-Some things I did, or at least similar to things I did:
+Some things I did, or at least similar to things I did. I don't have all steps
+here, though.
 
 ```
 pip install scons

@@ -2,7 +2,6 @@
 
 entry_symbol = "swift_entry_point"
 compatibility_minimum = "4.2"
-reloadable = true
 
 [libraries]
 

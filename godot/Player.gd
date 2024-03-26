@@ -1,3 +1,4 @@
+class_name Player
 extends Sprite2D
 
 
