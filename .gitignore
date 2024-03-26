@@ -1,5 +1,12 @@
+exports/
 extension_api.json
 godot-cpp/
 *.os
 .sconsign.dblite
 *.so
+target/
+
+
+# Added by cargo
+
+/target

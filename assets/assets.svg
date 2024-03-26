@@ -24,9 +24,9 @@
      inkscape:pagecheckerboard="1"
      inkscape:document-units="mm"
      showgrid="false"
-     inkscape:zoom="0.77593294"
-     inkscape:cx="583.16895"
-     inkscape:cy="356.34523"
+     inkscape:zoom="1.0973349"
+     inkscape:cx="451.54857"
+     inkscape:cy="406.89493"
      inkscape:window-width="1920"
      inkscape:window-height="1080"
      inkscape:window-x="0"
@@ -214,8 +214,11 @@
       </g>
     </g>
     <g
-       id="g28062"
-       transform="matrix(0.26458333,0,0,0.26458333,-6.7690357,24.159605)">
+       id="rust"
+       transform="matrix(0.26458333,0,0,0.26458333,-6.7690357,24.159605)"
+       inkscape:export-filename="/home/tjpalmer/contextfree/gdext/assets/rust.png"
+       inkscape:export-xdpi="111.39"
+       inkscape:export-ydpi="111.39">
       <g
          id="g28674">
         <g
@@ -290,8 +293,11 @@
       </g>
     </g>
     <g
-       id="g16969"
-       transform="matrix(0.26458333,0,0,0.26458333,102.83622,-6.9382778)">
+       id="cpp"
+       transform="matrix(0.26458333,0,0,0.26458333,102.83622,-6.9382778)"
+       inkscape:export-filename="/home/tjpalmer/contextfree/gdext/assets/cpp.png"
+       inkscape:export-xdpi="111.39"
+       inkscape:export-ydpi="111.39">
       <g
          id="g6238-2"
          transform="translate(-386.92998,198.99631)">
@@ -396,8 +402,11 @@
       </g>
     </g>
     <g
-       id="g23139"
-       transform="matrix(0.26458333,0,0,0.26458333,146.73423,-7.34665)">
+       id="swift"
+       transform="matrix(0.26458333,0,0,0.26458333,146.73423,-7.34665)"
+       inkscape:export-filename="/home/tjpalmer/contextfree/gdext/assets/swift.png"
+       inkscape:export-xdpi="111.39"
+       inkscape:export-ydpi="111.39">
       <g
          id="g20632-3"
          transform="translate(-667.81728,200.7257)">
@@ -477,8 +486,11 @@
       </g>
     </g>
     <g
-       id="g24349"
-       transform="matrix(0.26458333,0,0,0.26458333,49.746804,-7.5865078)">
+       id="csharp"
+       transform="matrix(0.26458333,0,0,0.26458333,49.746804,-7.5865078)"
+       inkscape:export-filename="/home/tjpalmer/contextfree/gdext/assets/csharp.png"
+       inkscape:export-xdpi="111.39"
+       inkscape:export-ydpi="111.39">
       <g
          id="g2327-6"
          transform="translate(-238.27998,201.89631)">
@@ -557,8 +569,11 @@
       </g>
     </g>
     <g
-       id="g20587"
-       transform="matrix(0.26458333,0,0,0.26458333,58.392578,-7.9486289)">
+       id="zig"
+       transform="matrix(0.26458333,0,0,0.26458333,58.392578,-7.9486289)"
+       inkscape:export-filename="/home/tjpalmer/contextfree/gdext/assets/zig.png"
+       inkscape:export-xdpi="111.39"
+       inkscape:export-ydpi="111.39">
       <g
          id="g6244-2"
          transform="translate(-525.98046,202.84172)">
@@ -1233,7 +1248,7 @@
     </g>
     <g
        id="g972"
-       transform="matrix(0.26458333,0,0,0.26458333,144.35562,69.956312)">
+       transform="matrix(0.36493212,0,0,0.36493212,176.76408,87.258939)">
       <g
          id="use970">
         <path
@@ -1250,7 +1265,7 @@
     </g>
     <g
        id="g976"
-       transform="matrix(0.26458333,0,0,0.26458333,144.35562,69.956312)">
+       transform="matrix(0.36493212,0,0,0.36493212,188.44191,87.258939)">
       <g
          id="use974">
         <path
@@ -1267,7 +1282,7 @@
     </g>
     <g
        id="g1036"
-       transform="matrix(0.26458333,0,0,0.26458333,40.916371,71.47574)">
+       transform="matrix(0.36493212,0,0,0.36493212,-56.792484,28.8698)">
       <g
          id="use1034">
         <path
@@ -1294,7 +1309,7 @@
     </g>
     <g
        id="g1040"
-       transform="matrix(0.26458333,0,0,0.26458333,40.916371,71.47574)">
+       transform="matrix(0.36493212,0,0,0.36493212,-91.825966,28.8698)">
       <g
          id="use1038">
         <path
@@ -1326,7 +1341,7 @@
     </g>
     <g
        id="g1044"
-       transform="matrix(0.26458333,0,0,0.26458333,40.916371,71.47574)">
+       transform="matrix(0.36493212,0,0,0.36493212,-33.436828,28.8698)">
       <g
          id="use1042">
         <path
@@ -1353,7 +1368,7 @@
     </g>
     <g
        id="g1048"
-       transform="matrix(0.26458333,0,0,0.26458333,40.916371,71.47574)">
+       transform="matrix(0.36493212,0,0,0.36493212,24.952312,28.8698)">
       <g
          id="use1046">
         <path
@@ -1380,7 +1395,7 @@
     </g>
     <g
        id="g1052"
-       transform="matrix(0.26458333,0,0,0.26458333,40.916371,71.47574)">
+       transform="matrix(0.26458333,0,0,0.26458333,17.430608,-26.122302)">
       <g
          id="use1050">
         <path
@@ -1412,7 +1427,7 @@
     </g>
     <g
        id="g1056"
-       transform="matrix(0.26458333,0,0,0.26458333,40.916371,71.47574)">
+       transform="matrix(0.26458333,0,0,0.26458333,59.763941,-26.122302)">
       <g
          id="use1054">
         <path
@@ -1439,7 +1454,7 @@
     </g>
     <g
        id="g1060"
-       transform="matrix(0.26458333,0,0,0.26458333,192.82141,44.034602)">
+       transform="matrix(0.36493212,0,0,0.36493212,59.985803,28.8698)">
       <g
          id="use1058">
         <path
@@ -1471,7 +1486,7 @@
     </g>
     <g
        id="g1064"
-       transform="matrix(0.26458333,0,0,0.26458333,192.82141,44.034602)">
+       transform="matrix(0.36493212,0,0,0.36493212,71.663636,28.8698)">
       <g
          id="use1062">
         <path
@@ -1498,7 +1513,7 @@
     </g>
     <g
        id="g1432"
-       transform="matrix(0.26458333,0,0,0.26458333,192.82141,44.034602)">
+       transform="matrix(0.36493212,0,0,0.36493212,235.15322,52.225455)">
       <g
          id="use1430">
         <path
@@ -1530,7 +1545,7 @@
     </g>
     <g
        id="g1436"
-       transform="matrix(0.26458333,0,0,0.26458333,192.82141,44.034602)">
+       transform="matrix(0.36493212,0,0,0.36493212,223.47538,52.225455)">
       <g
          id="use1434">
         <path

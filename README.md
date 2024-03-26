@@ -16,3 +16,19 @@ cd ..
 time scons platform=linux
 clang-format -i src/*.cpp src/*.h
 ```
+
+```
+mkdir swift
+cd swifth
+swift package init --type library --name GdSwift
+swift build --configuration release
+# cp .build/release/lib*.so ../demo/bin/
+# Manually copied libSwiftGodot.so to export dir.
+# TODO Put it in bin after all?
+```
+
+```
+cargo init --lib
+# modify file per instructions
+cargo build --release
+```
