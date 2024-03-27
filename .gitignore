@@ -5,6 +5,8 @@ godot-cpp/
 .sconsign.dblite
 *.so
 target/
+zig-cache/
+zig-out/
 
 
 # Added by cargo

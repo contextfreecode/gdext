@@ -1,0 +1,3 @@
+[submodule "zig/godot-zig"]
+	path = zig/godot-zig
+	url = git@github.com:godot-zig/godot-zig.git
