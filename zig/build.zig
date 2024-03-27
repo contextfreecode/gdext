@@ -23,13 +23,13 @@ pub fn build(b: *std.Build) void {
         .target = target,
         .optimize = optimize,
     });
-    lib.addIncludePath(.{ .path = "godot-zig/src/api" });
     lib.linkLibC();
 
-    const godot = b.addModule("godot", .{
+    const godot = b.addModule("Godot", .{
         .root_source_file = .{ .path = "godot-zig/src/api/Godot.zig" },
     });
-    lib.root_module.addImport("godot", godot);
+    godot.addIncludePath(.{ .path = "godot-zig/src/api" });
+    lib.root_module.addImport("Godot", godot);
 
     // This declares intent for the library to be installed into the standard
     // location when the user invokes the "install" step (the default step when
