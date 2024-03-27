@@ -1,0 +1,9 @@
+[configuration]
+
+compatibility_minimum = "4.2.0"
+entry_symbol = "my_extension_init"
+
+[libraries]
+
+linux.debug.x86_64 = "res://../zig/zig-out/lib/libzigshipper.so"
+linux.release.x86_64 = "res://../zig/zig-out/lib/libzigshipper.so"

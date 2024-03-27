@@ -1,13 +1,10 @@
 class_name Player
-extends Sprite2D
+extends AnimatedSprite2D
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+#func _ready():
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float):
 	var velocity := Vector2.ZERO
 	if Input.is_action_pressed("ui_up"):
@@ -18,4 +15,8 @@ func _process(delta: float):
 		velocity = Vector2.LEFT.rotated(rotation) * 400 * delta
 	elif Input.is_action_pressed("ui_right"):
 		velocity = Vector2.RIGHT.rotated(rotation) * 400 * delta
-	position += velocity
+	if velocity.length() > 0:
+		play("swim")
+		position += velocity
+	else:
+		stop()

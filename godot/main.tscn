@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bsd55whmkxkxb"]
+[gd_scene load_steps=13 format=3 uid="uid://bsd55whmkxkxb"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_llsrq"]
 [ext_resource type="Texture2D" uid="uid://bi1jfdeiupk1y" path="res://icon.svg" id="1_ssr4w"]
@@ -8,6 +8,23 @@
 [ext_resource type="Script" path="res://Player.gd" id="4_ppds8"]
 [ext_resource type="Texture2D" uid="uid://d4fr8e0ijooen" path="res://assets/swift.png" id="5_0susi"]
 [ext_resource type="Texture2D" uid="uid://bc746y2bkxphn" path="res://assets/rust.png" id="8_tqcs3"]
+[ext_resource type="Texture2D" uid="uid://cjyu6rjcjglum" path="res://assets/zig.png" id="9_ufsnv"]
+[ext_resource type="Texture2D" uid="uid://da60o1w7cedfc" path="res://assets/fish1.png" id="10_4h157"]
+[ext_resource type="Texture2D" uid="uid://divpm8ilegavo" path="res://assets/fish2.png" id="11_smcpe"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qmws7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_4h157")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_smcpe")
+}],
+"loop": true,
+"name": &"swim",
+"speed": 5.0
+}]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_llsrq")
@@ -19,7 +36,7 @@ texture = ExtResource("2_5a4du")
 centered = false
 
 [node name="CSharpShip" type="Sprite2D" parent="."]
-position = Vector2(524, 343)
+position = Vector2(495, 339)
 texture = ExtResource("3_ievdu")
 script = ExtResource("3_kchdg")
 
@@ -31,7 +48,17 @@ texture = ExtResource("8_tqcs3")
 position = Vector2(139, 485)
 texture = ExtResource("5_0susi")
 
+[node name="ZigShip" type="ZigShip" parent="."]
+position = Vector2(966, 262)
+texture = ExtResource("9_ufsnv")
+
 [node name="Player" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(1094, 610)
 texture = ExtResource("1_ssr4w")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(656, 292)
+sprite_frames = SubResource("SpriteFrames_qmws7")
+animation = &"swim"
 script = ExtResource("4_ppds8")
