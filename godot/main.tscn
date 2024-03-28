@@ -39,32 +39,56 @@ material = SubResource("ShaderMaterial_vm7du")
 offset_right = 1280.0
 offset_bottom = 720.0
 
-[node name="CppShip" type="CppShip" parent="."]
-amplitude = 100.0
-speed = 0.5
-position = Vector2(1297, 29)
-texture = ExtResource("2_5a4du")
-centered = false
-
-[node name="CSharpShip" type="Sprite2D" parent="."]
-position = Vector2(-93, 106)
-texture = ExtResource("3_ievdu")
-script = ExtResource("3_kchdg")
-
-[node name="RustShip" type="RustShip" parent="."]
-position = Vector2(-88, 454)
-texture = ExtResource("8_tqcs3")
-
-[node name="SwiftShip" type="SwiftShip" parent="."]
-position = Vector2(171, -99)
-texture = ExtResource("5_0susi")
-
-[node name="ZigShip" type="ZigShip" parent="."]
-position = Vector2(1369, 451)
-texture = ExtResource("9_ufsnv")
-
 [node name="Player" type="AnimatedSprite2D" parent="."]
 position = Vector2(640, 300)
 sprite_frames = SubResource("SpriteFrames_qmws7")
 animation = &"swim"
 script = ExtResource("4_ppds8")
+
+[node name="Ships" type="Node" parent="."]
+
+[node name="CppShip" type="CppShip" parent="Ships"]
+
+[node name="Sprite" type="Sprite2D" parent="Ships/CppShip"]
+position = Vector2(1376, 203)
+texture = ExtResource("2_5a4du")
+
+[node name="Target" type="Node2D" parent="Ships/CppShip"]
+position = Vector2(343, 414)
+
+[node name="CSharpShip" type="Node" parent="Ships"]
+script = ExtResource("3_kchdg")
+
+[node name="Sprite" type="Sprite2D" parent="Ships/CSharpShip"]
+position = Vector2(-93, 106)
+texture = ExtResource("3_ievdu")
+
+[node name="Target" type="Node2D" parent="Ships/CSharpShip"]
+position = Vector2(941, 500)
+
+[node name="RustShip" type="Node" parent="Ships"]
+
+[node name="Sprite" type="RustShip" parent="Ships/RustShip"]
+position = Vector2(-88, 454)
+texture = ExtResource("8_tqcs3")
+
+[node name="Target" type="Node2D" parent="Ships/RustShip"]
+position = Vector2(644, 106)
+
+[node name="SwiftShip" type="Node" parent="Ships"]
+
+[node name="Sprite" type="SwiftShip" parent="Ships/SwiftShip"]
+position = Vector2(171, -99)
+texture = ExtResource("5_0susi")
+
+[node name="Target" type="Node2D" parent="Ships/SwiftShip"]
+position = Vector2(525, 414)
+
+[node name="ZigShip" type="Node" parent="Ships"]
+
+[node name="Sprite" type="ZigShip" parent="Ships/ZigShip"]
+position = Vector2(1369, 451)
+texture = ExtResource("9_ufsnv")
+
+[node name="Target" type="Node2D" parent="Ships/ZigShip"]
+position = Vector2(846, 106)
