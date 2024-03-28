@@ -8,6 +8,7 @@ unsafe impl ExtensionLibrary for MyExtension {}
 #[derive(GodotClass)]
 #[class(base=Node)]
 struct RustShip {
+    #[export(range=(0.0, 2000.0, 100.0))]
     speed: f32,
     base: Base<Node>,
     sprite: Option<Gd<Node2D>>,
@@ -21,7 +22,7 @@ impl INode2D for RustShip {
     fn init(base: Base<Node>) -> Self {
         // godot_print!("rust init");
         Self {
-            speed: 400f32,
+            speed: 500f32,
             base,
             sprite: None,
             start: Vector2::ZERO,

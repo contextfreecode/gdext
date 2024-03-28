@@ -3,6 +3,7 @@ using Godot;
 
 public partial class CSharpShip : Node
 {
+	[Export(PropertyHint.Range, "0,2000,100")]
 	public float Speed = 500;
 
 	// Called when the node enters the scene tree for the first time.
