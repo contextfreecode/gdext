@@ -41,29 +41,40 @@ void CppShip::_process(double delta) {
         return;
     }
     auto move = speed * delta;
-    auto target_pos = target->get_position();
-    auto center = g::Vector2(target_pos.x, 0.5 * (start.y + target_pos.y));
+    auto target = this->target->get_position();
     auto position = sprite->get_position();
-    auto offset = position - center;
-    if (offset.x > 0) {
-        if (position.x > start.x) {
-            position = start;
-        } else {
-            // Right side, top or bottom.
-            auto direction = offset.y < 0 ? -1.0 : 1.0;
-            position.x += direction * move;
+    if (state == State::Wait) {
+        start = position;
+    }
+    state = state == State::Wait                       ? State::Enter :
+        state == State::Enter && position.x < target.x ? State::Turn :
+        state == State::Turn && position.x > target.x  ? State::Exit :
+        state == State::Exit && position.x > start.x   ? State::Wait :
+                                                         state;
+    position += move * ([this, position, target]() {
+        switch (state) {
+            case State::Enter:
+                return g::Vector2(-1, 0);
+            case State::Turn: {
+                auto center = g::Vector2(target.x, 0.5 * (start.y + target.y));
+                auto offset = position - center;
+                auto angle = std::atan2(offset.y, offset.x);
+                return g::Vector2(std::sin(angle), -std::cos(angle));
+            }
+            case State::Exit:
+                return g::Vector2(1, 0);
+            default:
+                return g::Vector2(0, 0);
         }
-    } else {
-        // Left side.
-        auto angle = std::atan2(offset.y, offset.x);
-        position.x += move * std::sin(angle);
-        position.y -= move * std::cos(angle);
+    })();
+    if (state == State::Wait) {
+        position = start;
     }
     sprite->set_position(position);
     // Track for signal.
     time_emit += delta;
     if (time_emit > 1.0) {
-        emit_signal("position_changed", this, offset);
+        emit_signal("position_changed", this, position);
         time_emit = 0.0;
     }
 }

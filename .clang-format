@@ -1,5 +1,9 @@
 ---
 BasedOnStyle: LLVM
 AlignAfterOpenBracket: BlockIndent
+AlignOperands: DontAlign
+BreakBeforeTernaryOperators: false
+IndentCaseLabels: true
 IndentWidth: 4
+LambdaBodyIndentation: OuterScope
 PointerAlignment: Left
