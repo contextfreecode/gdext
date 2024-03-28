@@ -40,7 +40,6 @@ void CppShip::_process(double delta) {
     if (g::Engine::get_singleton()->is_editor_hint()) {
         return;
     }
-    auto move = speed * delta;
     auto position = sprite->get_position();
     auto target = this->target->get_position();
     if (state == State::Wait) {
@@ -60,7 +59,7 @@ void CppShip::_process(double delta) {
                 return state;
         }
     })();
-    position += move * ([this, position, target]() {
+    position += speed * delta * ([this, position, target]() {
         switch (state) {
             case State::Enter:
                 return g::Vector2(-1, 0);
