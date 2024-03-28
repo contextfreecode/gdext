@@ -22,16 +22,7 @@ public partial class CSharpShip : Node
 			{
 				// TODO Transition only on request.
 				start = sprite.Position;
-				state = State.Start;
-				break;
-			}
-			case State.Start:
-			{
-				sprite.Position += new Vector2(move, 0);
-				if (sprite.Position.X > target.Position.X)
-				{
-					state = State.Right;
-				}
+				state = State.Top;
 				break;
 			}
 			case State.Top:
@@ -82,7 +73,6 @@ public partial class CSharpShip : Node
 	private enum State
 	{
 		Wait,
-		Start,
 		Top,
 		Right,
 		Bottom,

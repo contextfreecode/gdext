@@ -46,7 +46,7 @@ void CppShip::_process(double delta) {
     auto position = sprite->get_position();
     auto offset = position - center;
     if (offset.x > 0) {
-        if (position.x > start.x && time_emit < 0.1) {
+        if (position.x > start.x) {
             position = start;
         } else {
             // Right side, top or bottom.

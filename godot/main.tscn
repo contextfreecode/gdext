@@ -66,9 +66,9 @@ texture = ExtResource("3_ievdu")
 [node name="Target" type="Node2D" parent="Ships/CSharpShip"]
 position = Vector2(941, 500)
 
-[node name="RustShip" type="Node" parent="Ships"]
+[node name="RustShip" type="RustShip" parent="Ships"]
 
-[node name="Sprite" type="RustShip" parent="Ships/RustShip"]
+[node name="Sprite" type="Sprite2D" parent="Ships/RustShip"]
 position = Vector2(-88, 454)
 texture = ExtResource("8_tqcs3")
 
