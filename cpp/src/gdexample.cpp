@@ -41,8 +41,8 @@ void CppShip::_process(double delta) {
         return;
     }
     auto move = speed * delta;
-    auto target = this->target->get_position();
     auto position = sprite->get_position();
+    auto target = this->target->get_position();
     if (state == State::Wait) {
         start = position;
     }
