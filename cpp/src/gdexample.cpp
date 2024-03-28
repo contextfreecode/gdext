@@ -46,11 +46,20 @@ void CppShip::_process(double delta) {
     if (state == State::Wait) {
         start = position;
     }
-    state = state == State::Wait                       ? State::Enter :
-        state == State::Enter && position.x < target.x ? State::Turn :
-        state == State::Turn && position.x > target.x  ? State::Exit :
-        state == State::Exit && position.x > start.x   ? State::Wait :
-                                                         state;
+    state = ([this, position, target]() {
+        switch (state) {
+            case State::Wait:
+                return State::Enter;
+            case State::Enter:
+                return position.x < target.x ? State::Turn : state;
+            case State::Turn:
+                return position.x > target.x ? State::Exit : state;
+            case State::Exit:
+                return position.x > start.x ? State::Wait : state;
+            default:
+                return state;
+        }
+    })();
     position += move * ([this, position, target]() {
         switch (state) {
             case State::Enter:
