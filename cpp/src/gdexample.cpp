@@ -1,6 +1,6 @@
 #include "gdexample.h"
-#include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/classes/engine.hpp>
+#include <godot_cpp/core/class_db.hpp>
 
 namespace g = godot;
 
@@ -19,14 +19,14 @@ void CppShip::_bind_methods() {
     );
     g::ClassDB::add_property(
         "CppShip",
-        g::PropertyInfo(g::Variant::FLOAT, "speed", g::PROPERTY_HINT_RANGE, "0,2000,100"),
+        g::PropertyInfo(
+            g::Variant::FLOAT, "speed", g::PROPERTY_HINT_RANGE, "0,2000,100"
+        ),
         "set_speed", "get_speed"
     );
 }
 
-CppShip::CppShip() {
-    speed = 500.0;
-}
+CppShip::CppShip() {}
 
 CppShip::~CppShip() {
     // Add your cleanup here.
@@ -77,4 +77,4 @@ void CppShip::_ready() {
     target = get_node<g::Node2D>(g::NodePath("Target"));
 }
 
-}
+} // namespace shipper

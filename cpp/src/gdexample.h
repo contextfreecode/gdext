@@ -5,14 +5,22 @@
 
 namespace shipper {
 
+enum class State {
+    Wait,
+    Enter,
+    Turn,
+    Exit,
+};
+
 class CppShip : public godot::Node {
     GDCLASS(CppShip, godot::Node)
 
   private:
-    double speed;
+    double speed = 500.0;
 
     godot::Node2D* sprite;
     godot::Vector2 start;
+    State state = State::Wait;
     godot::Node2D* target;
     double time_emit;
 
@@ -30,6 +38,6 @@ class CppShip : public godot::Node {
     void _ready() override;
 };
 
-} // namespace godot
+} // namespace shipper
 
 #endif
