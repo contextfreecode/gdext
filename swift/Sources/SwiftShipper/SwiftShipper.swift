@@ -4,6 +4,9 @@ import SwiftGodot
 
 @Godot
 class SwiftShip: Node {
+    @Export(.range, "0,2000,100")
+    var speed: Double = 500.0
+
     public override func _ready () {
         sprite = (getNode(path: "Sprite") as! Node2D)
         target = (getNode(path: "Target") as! Node2D)
@@ -33,7 +36,6 @@ class SwiftShip: Node {
         sprite!.position = position
     }
 
-    var speed = 400.0
     var sprite = nil as Node2D?
     var start = Vector2()
     var state = State.wait
