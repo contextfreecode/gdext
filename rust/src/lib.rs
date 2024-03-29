@@ -45,7 +45,7 @@ impl INode2D for RustShip {
             State::Enter if position.x > target.x => State::Up,
             State::Up if position.x < target.x => State::Down,
             State::Down if position.x > target.x => State::Exit,
-            State::Exit if position.x > view_rect.size.x + 100f32 => State::Wait,
+            State::Exit if position.x > view_rect.size.x + 200f32 => State::Wait,
             _ => self.state,
         };
         let distance = self.speed * delta as f32;
