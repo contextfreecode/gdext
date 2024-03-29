@@ -1,16 +1,19 @@
-[gd_scene load_steps=14 format=3 uid="uid://bsd55whmkxkxb"]
+[gd_scene load_steps=17 format=3 uid="uid://bsd55whmkxkxb"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_llsrq"]
 [ext_resource type="Texture2D" uid="uid://cf3ihs80fach" path="res://assets/cpp.png" id="2_5a4du"]
 [ext_resource type="Shader" path="res://assets/water.gdshader" id="2_bx3yb"]
 [ext_resource type="Texture2D" uid="uid://dop8x0tb7s627" path="res://assets/csharp.png" id="3_ievdu"]
 [ext_resource type="Script" path="res://CSharpShip.cs" id="3_kchdg"]
+[ext_resource type="Texture2D" uid="uid://7sfe1m4rrd57" path="res://assets/wavy2.png" id="4_dot2n"]
 [ext_resource type="Script" path="res://Player.gd" id="4_ppds8"]
 [ext_resource type="Texture2D" uid="uid://d4fr8e0ijooen" path="res://assets/swift.png" id="5_0susi"]
 [ext_resource type="Texture2D" uid="uid://bc746y2bkxphn" path="res://assets/rust.png" id="8_tqcs3"]
 [ext_resource type="Texture2D" uid="uid://cjyu6rjcjglum" path="res://assets/zig.png" id="9_ufsnv"]
 [ext_resource type="Texture2D" uid="uid://da60o1w7cedfc" path="res://assets/fish1.png" id="10_4h157"]
 [ext_resource type="Texture2D" uid="uid://divpm8ilegavo" path="res://assets/fish2.png" id="11_smcpe"]
+[ext_resource type="Texture2D" uid="uid://wbuw2i11u4sg" path="res://assets/wavy3.png" id="12_co80w"]
+[ext_resource type="TileSet" uid="uid://cgtd1p0jfj1e3" path="res://assets/ground.tres" id="12_wmx52"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vm7du"]
 shader = ExtResource("2_bx3yb")
@@ -38,6 +41,24 @@ script = ExtResource("1_llsrq")
 material = SubResource("ShaderMaterial_vm7du")
 offset_right = 1280.0
 offset_bottom = 720.0
+
+[node name="Background" type="CanvasModulate" parent="."]
+modulate = Color(0.0901961, 0.886275, 0.886275, 1)
+
+[node name="Wavy2" type="Sprite2D" parent="Background"]
+position = Vector2(738.932, 587.677)
+scale = Vector2(0.574409, 0.574409)
+texture = ExtResource("4_dot2n")
+
+[node name="Wavy2b" type="Sprite2D" parent="Background"]
+position = Vector2(882, 558)
+scale = Vector2(0.882141, 0.882141)
+texture = ExtResource("4_dot2n")
+
+[node name="Wavy3" type="Sprite2D" parent="Background"]
+position = Vector2(273.5, 432.408)
+scale = Vector2(1.0675, 1.0675)
+texture = ExtResource("12_co80w")
 
 [node name="Player" type="AnimatedSprite2D" parent="."]
 position = Vector2(640, 300)
@@ -92,3 +113,20 @@ texture = ExtResource("9_ufsnv")
 
 [node name="Target" type="Node2D" parent="Ships/ZigShip"]
 position = Vector2(846, 106)
+
+[node name="Ground" type="Node" parent="."]
+
+[node name="Wavy3" type="Sprite2D" parent="Ground"]
+position = Vector2(1029, 453)
+scale = Vector2(0.905, 0.905)
+texture = ExtResource("12_co80w")
+
+[node name="Wavy2" type="Sprite2D" parent="Ground"]
+position = Vector2(243, 500)
+scale = Vector2(1.07652, 1.07652)
+texture = ExtResource("4_dot2n")
+
+[node name="TileMap" type="TileMap" parent="Ground"]
+tile_set = ExtResource("12_wmx52")
+format = 2
+layer_0/tile_data = PackedInt32Array(196608, 65536, 0, 196609, 131072, 0, 196610, 196608, 0, 196611, 262144, 0, 196612, 327680, 0, 196613, 393216, 0, 196614, 65536, 0, 262143, 262144, 0, 262142, 131072, 0, 196615, 393216, 0, 262141, 196608, 0, 262140, 65536, 0, 196616, 327680, 0, 196617, 196608, 0, 196618, 393216, 0)
