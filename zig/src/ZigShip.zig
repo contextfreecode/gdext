@@ -18,19 +18,26 @@ pub fn _physics_process(self: *Self, delta: f64) void {
     var position = self.sprite.get_position();
     if (self.state == .wait) self.start = position;
     const target = self.target.get_position();
+    const exit = target[0] / 2;
+    const end = -200;
     self.state = switch (self.state) {
         .wait => .enter,
         .enter => if (position[0] < target[0]) .zag else self.state,
-        .zag => if (position[0] < target[0] / 2) .exit else self.state,
-        .exit => if (position[0] < -200) .wait else self.state,
+        .zag => if (position[0] < exit) .exit else self.state,
+        .exit => if (position[0] < end) .wait else self.state,
     };
     const distance: Vector2 = @splat(@as(f32, @floatCast(delta)) * self.speed);
-    const offset = Godot.normalized(target - self.start);
     position += distance * switch (self.state) {
         .wait => Vector2{ 0, 0 },
-        .enter => offset,
-        .zag => Vector2{ offset[0], -offset[1] },
-        .exit => offset,
+        .enter => Godot.normalized(target - self.start),
+        .zag => Godot.normalized(Vector2{
+            exit - target[0],
+            self.start[1] - target[1],
+        }),
+        .exit => Godot.normalized(Vector2{
+            end - exit,
+            target[1] - self.start[1],
+        }),
     };
     if (self.state == .wait) position = self.start;
     self.sprite.set_position(position);
