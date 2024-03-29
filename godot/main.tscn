@@ -84,9 +84,9 @@ texture = ExtResource("5_0susi")
 [node name="Target" type="Node2D" parent="Ships/SwiftShip"]
 position = Vector2(525, 414)
 
-[node name="ZigShip" type="Node" parent="Ships"]
+[node name="ZigShip" type="ZigShip" parent="Ships"]
 
-[node name="Sprite" type="ZigShip" parent="Ships/ZigShip"]
+[node name="Sprite" type="Sprite2D" parent="Ships/ZigShip"]
 position = Vector2(1369, 451)
 texture = ExtResource("9_ufsnv")
 
