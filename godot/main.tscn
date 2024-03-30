@@ -46,7 +46,7 @@ offset_bottom = 720.0
 [node name="Background" type="Node2D" parent="." groups=["scenery"]]
 modulate = Color(0.52549, 0.729412, 0.713726, 1)
 script = ExtResource("3_fdh0l")
-speed = 450.0
+speed = 350.0
 
 [node name="Wavy2" type="Sprite2D" parent="Background"]
 position = Vector2(738.932, 587.677)
