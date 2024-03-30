@@ -6,6 +6,14 @@ public partial class CSharpShip : Node
     [Export(PropertyHint.Range, "0,2000,100")]
     public float Speed = 500;
 
+    [Signal]
+    public delegate void finishedEventHandler(Node node);
+
+    public void Attack(double ship_y, double target_x, double target_y)
+    {
+        // TODO
+    }
+
     public override void _Ready()
     {
         sprite = GetNode<Node2D>("Sprite");
@@ -19,6 +27,7 @@ public partial class CSharpShip : Node
         {
             start = sprite.Position;
         }
+        var oldState = state;
         state = state switch
         {
             State.Wait => State.Top,
@@ -40,6 +49,10 @@ public partial class CSharpShip : Node
             };
         if (state == State.Wait)
         {
+            if (oldState != state)
+            {
+                EmitSignal(SignalName.finished, this);
+            }
             sprite.Position = start;
         }
     }

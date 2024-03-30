@@ -87,7 +87,7 @@ script = ExtResource("4_ppds8")
 
 [node name="Ships" type="Node" parent="."]
 
-[node name="CppShip" type="CppShip" parent="Ships"]
+[node name="CppShip" type="CppShip" parent="Ships" groups=["ship"]]
 
 [node name="Sprite" type="Sprite2D" parent="Ships/CppShip"]
 position = Vector2(1376, 203)
@@ -96,7 +96,7 @@ texture = ExtResource("2_5a4du")
 [node name="Target" type="Node2D" parent="Ships/CppShip"]
 position = Vector2(343, 414)
 
-[node name="CSharpShip" type="Node" parent="Ships"]
+[node name="CSharpShip" type="Node" parent="Ships" groups=["ship"]]
 script = ExtResource("3_kchdg")
 
 [node name="Sprite" type="Sprite2D" parent="Ships/CSharpShip"]
@@ -106,7 +106,7 @@ texture = ExtResource("3_ievdu")
 [node name="Target" type="Node2D" parent="Ships/CSharpShip"]
 position = Vector2(941, 500)
 
-[node name="RustShip" type="RustShip" parent="Ships"]
+[node name="RustShip" type="RustShip" parent="Ships" groups=["ship"]]
 
 [node name="Sprite" type="Sprite2D" parent="Ships/RustShip"]
 position = Vector2(-88, 454)
@@ -115,7 +115,7 @@ texture = ExtResource("8_tqcs3")
 [node name="Target" type="Node2D" parent="Ships/RustShip"]
 position = Vector2(644, 106)
 
-[node name="SwiftShip" type="SwiftShip" parent="Ships"]
+[node name="SwiftShip" type="SwiftShip" parent="Ships" groups=["ship"]]
 
 [node name="Sprite" type="Sprite2D" parent="Ships/SwiftShip"]
 position = Vector2(171, -99)
@@ -124,7 +124,7 @@ texture = ExtResource("5_0susi")
 [node name="Target" type="Node2D" parent="Ships/SwiftShip"]
 position = Vector2(525, 414)
 
-[node name="ZigShip" type="ZigShip" parent="Ships"]
+[node name="ZigShip" type="ZigShip" parent="Ships" groups=["ship"]]
 
 [node name="Sprite" type="Sprite2D" parent="Ships/ZigShip"]
 position = Vector2(1369, 451)
@@ -156,5 +156,3 @@ texture = ExtResource("4_dot2n")
 tile_set = ExtResource("12_wmx52")
 format = 2
 layer_0/tile_data = PackedInt32Array(196608, 65536, 0, 196609, 131072, 0, 196610, 196608, 0, 196611, 262144, 0, 196612, 327680, 0, 196613, 393216, 0, 196614, 65536, 0, 262143, 262144, 0, 262142, 131072, 0, 196615, 393216, 0, 262141, 196608, 0, 262140, 65536, 0, 196616, 327680, 0, 196617, 196608, 0, 196618, 393216, 0)
-
-[connection signal="finished" from="Ships/CppShip" to="." method="_on_ship_finished"]

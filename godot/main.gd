@@ -9,6 +9,8 @@ func _ready():
 	scenery_info.sprite_info = read_sprites()
 	scenery_info.tile_info = read_tiles()
 	get_tree().call_group("scenery", "prep_info", scenery_info)
+	for node in get_tree().get_nodes_in_group("ship"):
+		node.connect("finished", _on_ship_finished)
 
 
 func read_sprites() -> Scenery.SpriteInfo:
