@@ -27,7 +27,7 @@ func _process(delta):
 	var viewport_right := viewport_size.x - position.x
 	if last_sprite_x < viewport_right + gen_x:
 		print("ha: ", last_sprite_x, " vs ", viewport_right + gen_x)
-		place_sprite(max(viewport_right, last_sprite_x) + gen_x)
+		place_sprite(max(viewport_right, last_sprite_x) + 300)
 	var last_tile_x := tile_map.map_to_local(last_tile_coords).x
 	if last_tile_x < viewport_right + gen_x:
 		print("hi: ", last_tile_x, " vs ", viewport_right)

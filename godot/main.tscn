@@ -58,9 +58,9 @@ position = Vector2(882, 558)
 scale = Vector2(0.882141, 0.882141)
 texture = ExtResource("4_dot2n")
 
-[node name="Wavy2b" type="Sprite2D" parent="Background/Wavy2b"]
-position = Vector2(542.997, -30.6073)
-scale = Vector2(0.882141, 0.882141)
+[node name="Wavy2c" type="Sprite2D" parent="Background"]
+position = Vector2(1361, 531)
+scale = Vector2(0.778173, 0.778173)
 texture = ExtResource("4_dot2n")
 
 [node name="Wavy3" type="Sprite2D" parent="Background"]
@@ -68,9 +68,9 @@ position = Vector2(273.5, 432.408)
 scale = Vector2(1.0675, 1.0675)
 texture = ExtResource("12_co80w")
 
-[node name="Wavy3" type="Sprite2D" parent="Background/Wavy3"]
-position = Vector2(1348.52, 21.3673)
-scale = Vector2(0.856935, 0.856935)
+[node name="Wavy3b" type="Sprite2D" parent="Background"]
+position = Vector2(1713.04, 455.218)
+scale = Vector2(0.914778, 0.914778)
 texture = ExtResource("12_co80w")
 
 [node name="TileMap" type="TileMap" parent="Background"]
@@ -142,9 +142,9 @@ position = Vector2(1029, 453)
 scale = Vector2(0.905, 0.905)
 texture = ExtResource("12_co80w")
 
-[node name="Wavy3" type="Sprite2D" parent="Ground/Wavy3"]
-position = Vector2(628.284, 42.7086)
-scale = Vector2(0.825428, 0.825428)
+[node name="Wavy3b" type="Sprite2D" parent="Ground"]
+position = Vector2(1612, 473)
+scale = Vector2(0.819025, 0.819025)
 texture = ExtResource("12_co80w")
 
 [node name="Wavy2" type="Sprite2D" parent="Ground"]
