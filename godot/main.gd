@@ -20,11 +20,14 @@ func read_sprites() -> Scenery.SpriteInfo:
 			if kid is Sprite2D:
 				var path := kid.texture.resource_path as String
 				var scale := kid.scale.x as float
+				var end: Vector2 = kid.get_rect().end * kid.scale + kid.position
+				info.bottom = max(info.bottom, end.y)
 				info.min_scale = min(info.min_scale, scale)
 				info.max_scale = max(info.max_scale, scale)
-				print(kid.name, ": ", scale, ", ", path)
+				print(kid.name, ": ", scale, ", ", path, ", ", kid.position, ", ", kid.get_rect(), ", ", end)
 				if path not in info.refs:
-					info.refs[path] = kid.duplicate()
+					refs[path] = kid.duplicate()
+	info.refs.assign(refs.values())
 	print(info.refs)
 	print(info.min_scale, ", ", info.max_scale)
 	return info

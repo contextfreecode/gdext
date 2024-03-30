@@ -16,20 +16,43 @@ func _ready():
 	last_tile_coords = coords_array.max()
 	viewport_size = get_window().size
 	print(last_tile_coords, ": ", tile_map.map_to_local(last_tile_coords))
+	for kid in get_children():
+		if kid is Sprite2D:
+			last_sprite_x = max(last_sprite_x, kid.position.x)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	position.x -= delta * speed
 	var viewport_right := viewport_size.x - position.x
+	if last_sprite_x < viewport_right + gen_x:
+		print("ha: ", last_sprite_x, " vs ", viewport_right + gen_x)
+		place_sprite(max(viewport_right, last_sprite_x) + gen_x)
 	var last_tile_x := tile_map.map_to_local(last_tile_coords).x
-	if last_tile_x < viewport_right + 500:
+	if last_tile_x < viewport_right + gen_x:
 		print("hi: ", last_tile_x, " vs ", viewport_right)
 		place_tile()
 	# TODO Extend scenery. Clean up old.
 	#tile_map.get_cell_tile_data()
 	if position.x < -reset_x:
-		reset_things()
+		reset_scenery()
+
+
+func place_sprite(min_x: float):
+	var refs := info.sprite_info.refs
+	var ref := refs[info.rng.randi_range(0, refs.size() - 1)]
+	var sprite := ref.duplicate() as Sprite2D
+	var x = info.rng.randf_range(min_x, min_x + 1200)
+	var scale := info.rng.randf_range(
+		info.sprite_info.min_scale, info.sprite_info.max_scale
+	)
+	sprite.scale = Vector2(scale, scale)
+	var y := info.sprite_info.bottom - sprite.get_rect().end.y * scale
+	sprite.position = Vector2(x, y)
+	print("bottom: ", info.sprite_info.bottom, ", ", sprite.get_rect(), ", ", sprite.position)
+	last_sprite_x = x
+	add_child(sprite)
+	move_child(sprite, 0)
 
 
 func place_tile():
@@ -41,13 +64,20 @@ func place_tile():
 	tile_map.set_cell(0, last_tile_coords, 0, next_tile)
 
 
-func reset_sprites():
-	pass
-
-
-func reset_things():
+func reset_scenery():
 	reset_sprites()
+	# Changes position.x!!!
 	reset_tiles()
+
+
+func reset_sprites():
+	for kid in get_children():
+		if kid is Sprite2D:
+			kid.position.x -= reset_x
+			if kid.position.x < -gen_x:
+				kid.queue_free()
+				print("free: ", kid, ", ", kid.position.x)
+	last_sprite_x -= reset_x
 
 
 func reset_tiles():
@@ -70,7 +100,9 @@ func start_tile() -> Vector2i:
 	return tile_map.local_to_map(Vector2(-position.x, viewport_size.y))
 
 
+var gen_x := 200.0
 var info: Info
+var last_sprite_x := -INF
 var last_tile_coords: Vector2i
 var reset_x := 2000.0
 @onready var tile_map: TileMap = $TileMap
@@ -84,9 +116,10 @@ class Info:
 
 
 class SpriteInfo:
-	var max_scale := 0.0
+	var bottom := -INF
+	var max_scale := -INF
 	var min_scale := INF
-	var refs: Dictionary # String, Array[Sprite2D]
+	var refs: Array[Sprite2D]
 
 
 class TileInfo:

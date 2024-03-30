@@ -58,9 +58,19 @@ position = Vector2(882, 558)
 scale = Vector2(0.882141, 0.882141)
 texture = ExtResource("4_dot2n")
 
+[node name="Wavy2b" type="Sprite2D" parent="Background/Wavy2b"]
+position = Vector2(542.997, -30.6073)
+scale = Vector2(0.882141, 0.882141)
+texture = ExtResource("4_dot2n")
+
 [node name="Wavy3" type="Sprite2D" parent="Background"]
 position = Vector2(273.5, 432.408)
 scale = Vector2(1.0675, 1.0675)
+texture = ExtResource("12_co80w")
+
+[node name="Wavy3" type="Sprite2D" parent="Background/Wavy3"]
+position = Vector2(1348.52, 21.3673)
+scale = Vector2(0.856935, 0.856935)
 texture = ExtResource("12_co80w")
 
 [node name="TileMap" type="TileMap" parent="Background"]
@@ -124,11 +134,17 @@ texture = ExtResource("9_ufsnv")
 position = Vector2(846, 106)
 
 [node name="Ground" type="Node2D" parent="." groups=["scenery"]]
+position = Vector2(0, 10)
 script = ExtResource("3_fdh0l")
 
 [node name="Wavy3" type="Sprite2D" parent="Ground"]
 position = Vector2(1029, 453)
 scale = Vector2(0.905, 0.905)
+texture = ExtResource("12_co80w")
+
+[node name="Wavy3" type="Sprite2D" parent="Ground/Wavy3"]
+position = Vector2(628.284, 42.7086)
+scale = Vector2(0.825428, 0.825428)
 texture = ExtResource("12_co80w")
 
 [node name="Wavy2" type="Sprite2D" parent="Ground"]
@@ -137,7 +153,6 @@ scale = Vector2(1.07652, 1.07652)
 texture = ExtResource("4_dot2n")
 
 [node name="TileMap" type="TileMap" parent="Ground"]
-position = Vector2(0, 10)
 tile_set = ExtResource("12_wmx52")
 format = 2
 layer_0/tile_data = PackedInt32Array(196608, 65536, 0, 196609, 131072, 0, 196610, 196608, 0, 196611, 262144, 0, 196612, 327680, 0, 196613, 393216, 0, 196614, 65536, 0, 262143, 262144, 0, 262142, 131072, 0, 196615, 393216, 0, 262141, 196608, 0, 262140, 65536, 0, 196616, 327680, 0, 196617, 196608, 0, 196618, 393216, 0)
