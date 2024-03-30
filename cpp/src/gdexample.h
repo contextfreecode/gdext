@@ -22,7 +22,6 @@ class CppShip : public godot::Node {
     godot::Vector2 start;
     State state = State::Wait;
     godot::Node2D* target;
-    double time_emit;
 
   protected:
     static void _bind_methods();
@@ -31,6 +30,7 @@ class CppShip : public godot::Node {
     CppShip();
     ~CppShip();
 
+    void attack(double ship_y, double target_x, double target_y);
     double get_speed() const;
     void set_speed(const double p_speed);
 

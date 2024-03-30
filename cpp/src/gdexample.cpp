@@ -7,11 +7,15 @@ namespace g = godot;
 namespace shipper {
 
 void CppShip::_bind_methods() {
+    // Attack
+    g::ClassDB::bind_method(
+        g::D_METHOD("attack", "ship_y", "target_x", "target_y"),
+        &CppShip::attack
+    );
     // Position changed
-    ADD_SIGNAL(g::MethodInfo(
-        "position_changed", g::PropertyInfo(g::Variant::OBJECT, "node"),
-        g::PropertyInfo(g::Variant::VECTOR2, "new_pos")
-    ));
+    ADD_SIGNAL(
+        g::MethodInfo("finished", g::PropertyInfo(g::Variant::OBJECT, "node"))
+    );
     // Speed
     g::ClassDB::bind_method(g::D_METHOD("get_speed"), &CppShip::get_speed);
     g::ClassDB::bind_method(
@@ -32,6 +36,10 @@ CppShip::~CppShip() {
     // Add your cleanup here.
 }
 
+void CppShip::attack(double ship_y, double target_x, double target_y) {
+    //
+}
+
 double CppShip::get_speed() const { return speed; }
 
 void CppShip::set_speed(const double p_speed) { speed = p_speed; }
@@ -45,6 +53,7 @@ void CppShip::_process(double delta) {
     if (state == State::Wait) {
         start = position;
     }
+    auto old_state = state;
     state = ([this, position, target]() {
         switch (state) {
             case State::Wait:
@@ -76,15 +85,12 @@ void CppShip::_process(double delta) {
         }
     })();
     if (state == State::Wait) {
+        if (old_state != state) {
+            emit_signal("finished", this);
+        }
         position = start;
     }
     sprite->set_position(position);
-    // Track for signal.
-    time_emit += delta;
-    if (time_emit > 1.0) {
-        emit_signal("position_changed", this, position);
-        time_emit = 0.0;
-    }
 }
 
 void CppShip::_ready() {

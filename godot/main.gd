@@ -62,6 +62,5 @@ func read_tiles() -> Scenery.TileInfo:
 	return info
 
 
-func _on_cpp_ship_position_changed(node: Node, new_pos: Vector2):
-	#print("The position of " + node.get_class() + " is now " + str(new_pos))
-	pass
+func _on_ship_finished(node):
+	print("Ship finished: ", node, ", ", node == $Ships/CppShip)

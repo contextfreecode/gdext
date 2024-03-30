@@ -157,4 +157,4 @@ tile_set = ExtResource("12_wmx52")
 format = 2
 layer_0/tile_data = PackedInt32Array(196608, 65536, 0, 196609, 131072, 0, 196610, 196608, 0, 196611, 262144, 0, 196612, 327680, 0, 196613, 393216, 0, 196614, 65536, 0, 262143, 262144, 0, 262142, 131072, 0, 196615, 393216, 0, 262141, 196608, 0, 262140, 65536, 0, 196616, 327680, 0, 196617, 196608, 0, 196618, 393216, 0)
 
-[connection signal="position_changed" from="Ships/CppShip" to="." method="_on_cpp_ship_position_changed"]
+[connection signal="finished" from="Ships/CppShip" to="." method="_on_ship_finished"]
