@@ -21,8 +21,10 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	position.x -= delta * speed
-	var viewport_right := viewport_size.x + position.x
-	if last_tile_coords.x < viewport_right + 500:
+	var viewport_right := viewport_size.x - position.x
+	var last_tile_x := tile_map.map_to_local(last_tile_coords).x
+	if last_tile_x < viewport_right + 500:
+		print("hi: ", last_tile_x, " vs ", viewport_right)
 		place_tile()
 	# TODO Extend scenery. Clean up old.
 	#tile_map.get_cell_tile_data()
@@ -39,15 +41,27 @@ func place_tile():
 	tile_map.set_cell(0, last_tile_coords, 0, next_tile)
 
 
+func reset_sprites():
+	pass
+
+
 func reset_things():
+	reset_sprites()
+	reset_tiles()
+
+
+func reset_tiles():
 	var from := start_tile()
 	position.x += reset_x
 	var to := start_tile()
 	var tile_width := tile_map.tile_set.tile_size.x
-	var needed := ceili(viewport_size.x / float(tile_width))
+	# The +1 and many other things in the script are slop on my part.
+	# I haven't worked out perfect logic.
+	var needed := ceili(viewport_size.x / float(tile_width)) + 1
 	for i in range(0, needed):
+		last_tile_coords = Vector2i(to.x + i, to.y)
 		tile_map.set_cell(
-			0, Vector2i(to.x + i, to.y),
+			0, last_tile_coords,
 			0, tile_map.get_cell_atlas_coords(0, Vector2i(from.x + i, to.y)),
 		)
 
