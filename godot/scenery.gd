@@ -14,7 +14,7 @@ func prep_info(info_: Info):
 func _ready():
 	var coords_array := tile_map.get_used_cells(0)
 	last_tile_coords = coords_array.max()
-	viewport_size = get_window().size
+	viewport_size = get_viewport_rect().size
 	print(last_tile_coords, ": ", tile_map.map_to_local(last_tile_coords))
 	for kid in get_children():
 		if kid is Sprite2D:
