@@ -13,6 +13,18 @@ state: State = .wait,
 start: Vector2 = @splat(0),
 target: *Godot.Node2D = undefined,
 
+pub fn attack(self: *Self, ship_y: f64, target_x: f64, target_y: f64) void {
+    _ = self;
+    _ = ship_y;
+    _ = target_x;
+    _ = target_y;
+}
+
+pub fn _enter_tree(self: *Self) void {
+    _ = self;
+    Godot.registerMethod(Self, "attack");
+}
+
 pub fn _physics_process(self: *Self, delta: f64) void {
     if (Godot.Engine.getSingleton().is_editor_hint()) return;
     var position = self.sprite.get_position();
