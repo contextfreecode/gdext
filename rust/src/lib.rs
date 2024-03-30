@@ -18,6 +18,17 @@ struct RustShip {
 }
 
 #[godot_api]
+impl RustShip {
+    #[func]
+    fn attack(&mut self, ship_y: f64, target_x: f64, target_y: f64) {
+        // TODO
+    }
+
+    #[signal]
+    fn finished(node: Gd<Node>);
+}
+
+#[godot_api]
 impl INode2D for RustShip {
     fn init(base: Base<Node>) -> Self {
         // godot_print!("rust init");
@@ -36,6 +47,7 @@ impl INode2D for RustShip {
         let sprite = self.sprite.as_mut().unwrap();
         let target = self.target.as_mut().unwrap().get_position();
         let position = sprite.get_position();
+        let old_state = self.state;
         self.state = match self.state {
             State::Wait => {
                 // TODO Wait for request.
@@ -67,6 +79,11 @@ impl INode2D for RustShip {
             _ => position,
         };
         sprite.set_position(position);
+        if self.state == State::Wait && self.state != old_state {
+            let other_self = self.base().clone();
+            self.base_mut()
+                .emit_signal("finished".into(), &[Variant::from(other_self)]);
+        }
     }
 
     fn ready(&mut self) {

@@ -65,4 +65,4 @@ func read_tiles() -> Scenery.TileInfo:
 
 
 func _on_ship_finished(node):
-	print("Ship finished: ", node, ", ", node == $Ships/CppShip)
+	print("Ship finished: ", node, ", ", node == $Ships/RustShip)
