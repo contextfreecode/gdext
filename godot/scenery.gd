@@ -1,6 +1,9 @@
 extends Node2D
 
 
+@export_range(100, 1000, 50) var speed := 500.0
+
+
 func prep_info():
 	print("prep_info: ", name)
 
@@ -12,7 +15,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	position.x -= delta * speed
 
 
 @onready var tile_map = $TileMap

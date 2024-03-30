@@ -17,8 +17,6 @@ func _process(delta: float):
 	elif Input.is_action_pressed("ui_right"):
 		animation_speed = 2.0
 		velocity = Vector2.RIGHT.rotated(rotation) * 400 * delta
+	play("swim", animation_speed)
 	if velocity.length() > 0:
-		play("swim", animation_speed)
 		position += velocity
-	else:
-		stop()

@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dop8x0tb7s627" path="res://assets/csharp.png" id="3_ievdu"]
 [ext_resource type="Script" path="res://CSharpShip.cs" id="3_kchdg"]
 [ext_resource type="Texture2D" uid="uid://7sfe1m4rrd57" path="res://assets/wavy2.png" id="4_dot2n"]
-[ext_resource type="Script" path="res://Player.gd" id="4_ppds8"]
+[ext_resource type="Script" path="res://player.gd" id="4_ppds8"]
 [ext_resource type="Texture2D" uid="uid://d4fr8e0ijooen" path="res://assets/swift.png" id="5_0susi"]
 [ext_resource type="Texture2D" uid="uid://bc746y2bkxphn" path="res://assets/rust.png" id="8_tqcs3"]
 [ext_resource type="Texture2D" uid="uid://cjyu6rjcjglum" path="res://assets/zig.png" id="9_ufsnv"]
@@ -46,6 +46,7 @@ offset_bottom = 720.0
 [node name="Background" type="Node2D" parent="." groups=["scenery"]]
 modulate = Color(0.52549, 0.729412, 0.713726, 1)
 script = ExtResource("3_fdh0l")
+speed = 450.0
 
 [node name="Wavy2" type="Sprite2D" parent="Background"]
 position = Vector2(738.932, 587.677)
