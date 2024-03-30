@@ -7,6 +7,13 @@ class SwiftShip: Node {
     @Export(.range, "0,2000,100")
     var speed: Double = 500.0
 
+    #signal("finished", arguments: ["node": Node.self])
+
+    @Callable
+    public func attack(ship_x: Double, target_x: Double, target_y: Double) {
+        //
+    }
+
     public override func _ready () {
         sprite = (getNode(path: "Sprite") as! Node2D)
         target = (getNode(path: "Target") as! Node2D)
@@ -18,6 +25,7 @@ class SwiftShip: Node {
             start = position
         }
         let targetPos = target!.position
+        let oldState = state;
         state = switch state {
             case .wait: .enter
             case .enter: position.y > targetPos.y ? .exit : state
@@ -30,7 +38,10 @@ class SwiftShip: Node {
             case .exit: Vector2(x: direction.x, y: -direction.y)
         }
         position += move * delta * speed
-        if (state == .wait) {
+        if state == .wait {
+            if state != oldState {
+                emit(signal: SwiftShip.finished, self)
+            }
             position = start
         }
         sprite!.position = position
