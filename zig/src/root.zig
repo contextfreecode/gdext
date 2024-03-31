@@ -34,7 +34,7 @@ fn initializeLevel(_: ?*anyopaque, p_level: GDE.GDExtensionInitializationLevel) 
         return;
     }
     const ZigShip = @import("ZigShip.zig");
-    Godot.registerClass(ZigShip);
+    ZigShip.register();
 }
 
 fn deinitializeLevel(userdata: ?*anyopaque, p_level: GDE.GDExtensionInitializationLevel) callconv(.C) void {
