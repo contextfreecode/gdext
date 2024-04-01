@@ -315,6 +315,19 @@ const StringName = Godot.StringName;
 
 // typedef void (*GDExtensionInterfaceObjectMethodBindCall)(GDExtensionMethodBindPtr p_method_bind, GDExtensionObjectPtr p_instance, const GDExtensionConstVariantPtr *p_args, GDExtensionInt p_arg_count, GDExtensionUninitializedVariantPtr r_ret, GDExtensionCallError *r_error);
 
+// Variant::Variant(const StringName &v) {
+// 	from_type_constructor[STRING_NAME](_native_ptr(), v._native_ptr());
+// }
+
+// Variant::Variant(const Object *v) {
+// 	if (v) {
+// 		from_type_constructor[OBJECT](_native_ptr(), const_cast<GodotObject **>(&v->_owner));
+// 	} else {
+// 		GodotObject *nullobject = nullptr;
+// 		from_type_constructor[OBJECT](_native_ptr(), &nullobject);
+// 	}
+// }
+
 // Modified from: Object.zig: pub fn emit_signal(self: anytype, signal_: anytype) GlobalEnums.Error {
 pub fn emit_signal_self(self: *Self, signal_: anytype) GlobalEnums.Error {
     var result: GlobalEnums.Error = @import("std").mem.zeroes(GlobalEnums.Error);
@@ -328,12 +341,12 @@ pub fn emit_signal_self(self: *Self, signal_: anytype) GlobalEnums.Error {
         signal_name = StringName.initFromLatin1Chars(@as([*c]const u8, &signal_[0]));
     }
     const name_arg = Godot.Variant.init(*Godot.StringName, &signal_name);
-    const self_arg = Godot.Variant.init(*Self, @ptrCast(self.godot_object));
-    const args = [_]*const Godot.Variant{ &name_arg, &self_arg };
+    const self_arg = Godot.Variant.init(*Godot.Node, self.godot_object);
+    const args = [_]GDE.GDExtensionConstVariantPtr{ &name_arg, &self_arg };
     Godot.objectMethodBindCall(
         emit_signal_method,
         @ptrCast(self.godot_object),
-        @ptrCast(&args),
+        &args,
         args.len,
         &ret,
         @ptrCast(&result),
