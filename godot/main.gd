@@ -64,5 +64,6 @@ func read_tiles() -> Scenery.TileInfo:
 	return info
 
 
-func _on_ship_finished(node):
+# The "null" default is for testing emit without args.
+func _on_ship_finished(node: Node = null):
 	print("Ship finished: ", node, ", ", node == $Ships/RustShip)
