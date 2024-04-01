@@ -14,7 +14,9 @@ start: Vector2 = @splat(0),
 target: *Godot.Node2D = undefined,
 
 pub fn attack(self: *Self, ship_y: f64, target_x: f64, target_y: f64) void {
-    _ = self;
+    if (self.state != State.wait) return;
+    self.state = State.enter;
+    // TODO Interpret args.
     _ = ship_y;
     _ = target_x;
     _ = target_y;
@@ -29,7 +31,7 @@ pub fn _physics_process(self: *Self, delta: f64) void {
     const end = -200;
     const old_state = self.state;
     self.state = switch (self.state) {
-        .wait => .enter,
+        .wait => self.state,
         .enter => if (position[0] < target[0]) .zag else self.state,
         .zag => if (position[0] < exit) .exit else self.state,
         .exit => if (position[0] < end) .wait else self.state,

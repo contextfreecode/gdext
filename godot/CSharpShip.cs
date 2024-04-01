@@ -11,7 +11,9 @@ public partial class CSharpShip : Node
 
     public void Attack(double ship_y, double target_x, double target_y)
     {
-        // TODO
+        if (state != State.Wait) return;
+        state = State.Top;
+        // TODO Interpret args.
     }
 
     public override void _Ready()
@@ -30,7 +32,6 @@ public partial class CSharpShip : Node
         var oldState = state;
         state = state switch
         {
-            State.Wait => State.Top,
             State.Top when sprite.Position.X > target.Position.X => State.Right,
             State.Right when sprite.Position.Y > target.Position.Y => State.Bottom,
             State.Bottom when sprite.Position.X < target.Position.X / 2 => State.Left,

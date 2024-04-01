@@ -37,7 +37,9 @@ CppShip::~CppShip() {
 }
 
 void CppShip::attack(double ship_y, double target_x, double target_y) {
-    //
+    if (state != State::Wait) return;
+    state = State::Enter;
+    // TODO Interpret args.
 }
 
 double CppShip::get_speed() const { return speed; }
@@ -56,8 +58,6 @@ void CppShip::_process(double delta) {
     auto old_state = state;
     state = ([this, position, target]() {
         switch (state) {
-            case State::Wait:
-                return State::Enter;
             case State::Enter:
                 return position.x < target.x ? State::Turn : state;
             case State::Turn:

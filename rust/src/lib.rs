@@ -21,7 +21,11 @@ struct RustShip {
 impl RustShip {
     #[func]
     fn attack(&mut self, ship_y: f64, target_x: f64, target_y: f64) {
-        // TODO
+        if self.state != State::Wait {
+            return;
+        }
+        self.state = State::Enter;
+        // TODO Interpret args.
     }
 
     #[signal]
@@ -48,12 +52,10 @@ impl INode2D for RustShip {
         let target = self.target.as_mut().unwrap().get_position();
         let position = sprite.get_position();
         let old_state = self.state;
+        if self.state == State::Wait {
+            self.start = position;
+        }
         self.state = match self.state {
-            State::Wait => {
-                // TODO Wait for request.
-                self.start = position;
-                State::Enter
-            }
             State::Enter if position.x > target.x => State::Up,
             State::Up if position.x < target.x => State::Down,
             State::Down if position.x > target.x => State::Exit,

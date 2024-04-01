@@ -11,7 +11,9 @@ class SwiftShip: Node {
 
     @Callable
     public func attack(ship_x: Double, target_x: Double, target_y: Double) {
-        //
+        if state != .wait { return }
+        state = .enter;
+        // TODO Interpret args.
     }
 
     public override func _ready () {
@@ -21,13 +23,13 @@ class SwiftShip: Node {
 
     public override func _process(delta: Double) {
         var position = sprite!.position
-        if (state == .wait) {
+        if state == .wait {
             start = position
         }
         let targetPos = target!.position
         let oldState = state;
         state = switch state {
-            case .wait: .enter
+            case .wait: state
             case .enter: position.y > targetPos.y ? .exit : state
             case .exit: position.y < start.y ? .wait : state
         }
