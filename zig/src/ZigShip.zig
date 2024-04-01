@@ -50,7 +50,7 @@ pub fn _physics_process(self: *Self, delta: f64) void {
     if (self.state == .wait) {
         // _ = old_state;
         if (self.state != old_state) {
-            _ = self.emit_signal_self(finished_signal);
+            _ = self.emit_signal_self(finished_attack_signal);
         }
         position = self.start;
     }
@@ -67,7 +67,7 @@ pub fn _ready(self: *Self) void {
     var target_path = Godot.NodePath.initFromString("Target");
     defer target_path.deinit();
     self.target = @ptrCast(self.get_node(target_path));
-    _ = self.emit_signal_self(finished_signal);
+    _ = self.emit_signal_self(finished_attack_signal);
 }
 
 const State = enum {
@@ -77,7 +77,7 @@ const State = enum {
     exit,
 };
 
-var finished_signal: Godot.StringName = undefined;
+var finished_attack_signal: Godot.StringName = undefined;
 
 // pub fn add_user_signal(
 //     self: anytype,
@@ -122,7 +122,7 @@ var finished_signal: Godot.StringName = undefined;
 // }
 
 // ADD_SIGNAL(
-//     g::MethodInfo("finished", g::PropertyInfo(g::Variant::OBJECT, "node"))
+//     g::MethodInfo("finished_attack", g::PropertyInfo(g::Variant::OBJECT, "node"))
 // );
 
 // void ClassDB::add_signal(const StringName &p_class, const MethodInfo &p_signal) {
@@ -194,13 +194,13 @@ var finished_signal: Godot.StringName = undefined;
 pub fn register() void {
     Godot.registerClass(Self);
     Godot.registerMethod(Self, "attack");
-    finished_signal = Godot.StringName.initFromString(
-        Godot.String.initFromUtf8Chars("finished"),
+    finished_attack_signal = Godot.StringName.initFromString(
+        Godot.String.initFromUtf8Chars("finished_attack"),
     );
     const node_name = Godot.StringName.initFromString(
         Godot.String.initFromUtf8Chars("node"),
     );
-    const finished_property = GDE.GDExtensionPropertyInfo{
+    const finished_attack_property = GDE.GDExtensionPropertyInfo{
         .type = @intCast(GDE.GDEXTENSION_VARIANT_TYPE_OBJECT),
         .name = @ptrCast(@constCast(&node_name)),
         .class_name = Godot.getClassName(Godot.Node),
@@ -211,8 +211,8 @@ pub fn register() void {
     Godot.classdbRegisterExtensionClassSignal(
         Godot.p_library,
         Godot.getClassName(Self),
-        &finished_signal,
-        &finished_property,
+        &finished_attack_signal,
+        &finished_attack_property,
         1,
     );
     // classdbRegisterExtensionClassSignal

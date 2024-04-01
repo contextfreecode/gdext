@@ -10,7 +10,7 @@ func _ready():
 	scenery_info.tile_info = read_tiles()
 	get_tree().call_group("scenery", "prep_info", scenery_info)
 	for node in get_tree().get_nodes_in_group("ship"):
-		node.connect("finished", _on_ship_finished)
+		node.connect("finished_attack", _on_ship_finished_attack)
 
 
 func read_sprites() -> Scenery.SpriteInfo:
@@ -65,5 +65,5 @@ func read_tiles() -> Scenery.TileInfo:
 
 
 # The "null" default is for testing emit without args.
-func _on_ship_finished(node: Node = null):
+func _on_ship_finished_attack(node: Node = null):
 	print("Ship finished: ", node, ", ", node == $Ships/RustShip)
