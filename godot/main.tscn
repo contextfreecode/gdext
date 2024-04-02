@@ -268,7 +268,7 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 15
 theme_override_font_sizes/font_size = 45
-text = " 12345 "
+text = " Score 123 "
 script = ExtResource("16_u8gjv")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
