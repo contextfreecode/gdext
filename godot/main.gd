@@ -1,5 +1,7 @@
 extends Node
 
+signal ship_attacked
+
 
 func _ready():
 	var scenery_info = Scenery.Info.new()
@@ -10,7 +12,15 @@ func _ready():
 	scenery_info.tile_info = read_tiles()
 	get_tree().call_group("scenery", "prep_info", scenery_info)
 	for node in get_tree().get_nodes_in_group("ship"):
-		node.connect("finished_attack", _on_ship_finished_attack)
+		node.connect("attack_finished", _on_ship_attack_finished)
+		waiting_ships.append(node)
+	schedule_attacks(rng)
+
+
+func _process(delta: float):
+	if zig_sprite.position.x > zig_sprite_old_x:
+		zig_ship.emit_signal(&"attack_finished", zig_ship)
+	zig_sprite_old_x = zig_sprite.position.x
 
 
 func read_sprites() -> Scenery.SpriteInfo:
@@ -65,5 +75,34 @@ func read_tiles() -> Scenery.TileInfo:
 
 
 # The "null" default is for testing emit without args.
-func _on_ship_finished_attack(node: Node = null):
+func _on_ship_attack_finished(node: Node = null):
 	print("Ship finished: ", node, ", ", node == $Ships/RustShip)
+
+
+func schedule_attacks(rng: RandomNumberGenerator):
+	while true:
+		await get_tree().create_timer(rng.randf_range(0.0, 1.0)).timeout
+		if waiting_ships.is_empty():
+			if finished_ships.is_empty():
+				continue
+			waiting_ships.append_array(finished_ships)
+			finished_ships.clear()
+		var index := rng.randi_range(0, waiting_ships.size() - 1)
+		var ship := waiting_ships.pop_at(index) as Node
+		ship.attack(0.0, 0.0, 0.0)
+		ship_attacked.emit()
+		await wait_for_ship(ship)
+
+
+func wait_for_ship(ship: Node):
+	await ship.attack_finished
+	finished_ships.append(ship)
+
+
+var finished_ships: Array[Node]
+var waiting_ships: Array[Node]
+var zig_sprite_old_x := INF
+
+# Work around trouble sending signals from Zig.
+@onready var zig_ship = $Ships/ZigShip
+@onready var zig_sprite = $Ships/ZigShip/Sprite

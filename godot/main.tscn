@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bsd55whmkxkxb"]
+[gd_scene load_steps=21 format=3 uid="uid://bsd55whmkxkxb"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_llsrq"]
 [ext_resource type="Texture2D" uid="uid://cf3ihs80fach" path="res://assets/cpp.png" id="2_5a4du"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://divpm8ilegavo" path="res://assets/fish2.png" id="11_smcpe"]
 [ext_resource type="Texture2D" uid="uid://wbuw2i11u4sg" path="res://assets/wavy3.png" id="12_co80w"]
 [ext_resource type="TileSet" uid="uid://cgtd1p0jfj1e3" path="res://assets/ground.tres" id="12_wmx52"]
+[ext_resource type="Script" path="res://score.gd" id="16_u8gjv"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vm7du"]
 shader = ExtResource("2_bx3yb")
@@ -34,6 +35,14 @@ animations = [{
 "name": &"swim",
 "speed": 5.0
 }]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yfivn"]
+radius = 31.0
+height = 88.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wovkj"]
+radius = 47.0
+height = 132.0
 
 [node name="Main" type="Node"]
 script = ExtResource("1_llsrq")
@@ -79,19 +88,33 @@ tile_set = ExtResource("12_wmx52")
 format = 2
 layer_0/tile_data = PackedInt32Array(196608, 65536, 0, 196609, 131072, 0, 196610, 196608, 0, 196611, 262144, 0, 196612, 327680, 0, 196613, 393216, 0, 196614, 65536, 0, 262143, 262144, 0, 262142, 131072, 0, 196615, 393216, 0, 262141, 196608, 0, 262140, 65536, 0, 196616, 327680, 0, 196617, 196608, 0, 196618, 393216, 0)
 
-[node name="Player" type="AnimatedSprite2D" parent="."]
+[node name="Player" type="Area2D" parent="."]
 position = Vector2(640, 300)
+script = ExtResource("4_ppds8")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="Player"]
 sprite_frames = SubResource("SpriteFrames_qmws7")
 animation = &"swim"
-script = ExtResource("4_ppds8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2(18, 3)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_yfivn")
 
 [node name="Ships" type="Node" parent="."]
 
 [node name="CppShip" type="CppShip" parent="Ships" groups=["ship"]]
 
-[node name="Sprite" type="Sprite2D" parent="Ships/CppShip"]
-position = Vector2(1376, 203)
+[node name="Sprite" type="Area2D" parent="Ships/CppShip"]
+position = Vector2(1380, 203)
+
+[node name="Sprite" type="Sprite2D" parent="Ships/CppShip/Sprite"]
+position = Vector2(0, 15)
 texture = ExtResource("2_5a4du")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ships/CppShip/Sprite"]
+position = Vector2(0, -8)
+shape = SubResource("CapsuleShape2D_wovkj")
 
 [node name="Target" type="Node2D" parent="Ships/CppShip"]
 position = Vector2(343, 414)
@@ -99,36 +122,60 @@ position = Vector2(343, 414)
 [node name="CSharpShip" type="Node" parent="Ships" groups=["ship"]]
 script = ExtResource("3_kchdg")
 
-[node name="Sprite" type="Sprite2D" parent="Ships/CSharpShip"]
-position = Vector2(-93, 106)
+[node name="Sprite" type="Area2D" parent="Ships/CSharpShip"]
+position = Vector2(-100, 106)
+
+[node name="Sprite" type="Sprite2D" parent="Ships/CSharpShip/Sprite"]
 texture = ExtResource("3_ievdu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ships/CSharpShip/Sprite"]
+position = Vector2(0, -10)
+shape = SubResource("CapsuleShape2D_wovkj")
 
 [node name="Target" type="Node2D" parent="Ships/CSharpShip"]
 position = Vector2(941, 500)
 
 [node name="RustShip" type="RustShip" parent="Ships" groups=["ship"]]
 
-[node name="Sprite" type="Sprite2D" parent="Ships/RustShip"]
-position = Vector2(-88, 454)
+[node name="Sprite" type="Area2D" parent="Ships/RustShip"]
+position = Vector2(-100, 454)
+
+[node name="Sprite" type="Sprite2D" parent="Ships/RustShip/Sprite"]
 texture = ExtResource("8_tqcs3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ships/RustShip/Sprite"]
+position = Vector2(-1, -9)
+shape = SubResource("CapsuleShape2D_wovkj")
 
 [node name="Target" type="Node2D" parent="Ships/RustShip"]
 position = Vector2(644, 106)
 
 [node name="SwiftShip" type="SwiftShip" parent="Ships" groups=["ship"]]
 
-[node name="Sprite" type="Sprite2D" parent="Ships/SwiftShip"]
+[node name="Sprite" type="Area2D" parent="Ships/SwiftShip"]
 position = Vector2(171, -99)
+
+[node name="Sprite" type="Sprite2D" parent="Ships/SwiftShip/Sprite"]
 texture = ExtResource("5_0susi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ships/SwiftShip/Sprite"]
+position = Vector2(0, -12)
+shape = SubResource("CapsuleShape2D_wovkj")
 
 [node name="Target" type="Node2D" parent="Ships/SwiftShip"]
 position = Vector2(525, 414)
 
 [node name="ZigShip" type="ZigShip" parent="Ships" groups=["ship"]]
 
-[node name="Sprite" type="Sprite2D" parent="Ships/ZigShip"]
-position = Vector2(1369, 451)
+[node name="Sprite" type="Area2D" parent="Ships/ZigShip"]
+position = Vector2(1380, 451)
+
+[node name="Sprite" type="Sprite2D" parent="Ships/ZigShip/Sprite"]
 texture = ExtResource("9_ufsnv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ships/ZigShip/Sprite"]
+position = Vector2(-1, -7)
+shape = SubResource("CapsuleShape2D_wovkj")
 
 [node name="Target" type="Node2D" parent="Ships/ZigShip"]
 position = Vector2(846, 106)
@@ -156,3 +203,28 @@ texture = ExtResource("4_dot2n")
 tile_set = ExtResource("12_wmx52")
 format = 2
 layer_0/tile_data = PackedInt32Array(196608, 65536, 0, 196609, 131072, 0, 196610, 196608, 0, 196611, 262144, 0, 196612, 327680, 0, 196613, 393216, 0, 196614, 65536, 0, 262143, 262144, 0, 262142, 131072, 0, 196615, 393216, 0, 262141, 196608, 0, 262140, 65536, 0, 196616, 327680, 0, 196617, 196608, 0, 196618, 393216, 0)
+
+[node name="Bounds" type="ReferenceRect" parent="."]
+offset_right = 1280.0
+offset_bottom = 655.0
+border_color = Color(1, 1, 1, 1)
+
+[node name="Score" type="Label" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -77.0
+offset_top = -63.0
+offset_right = 77.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 15
+theme_override_font_sizes/font_size = 45
+text = " 12345 "
+script = ExtResource("16_u8gjv")
+
+[connection signal="ship_attacked" from="." to="Score" method="_on_main_ship_attacked"]

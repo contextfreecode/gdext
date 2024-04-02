@@ -7,9 +7,9 @@ public partial class CSharpShip : Node
     public float Speed = 500;
 
     [Signal]
-    public delegate void finished_attackEventHandler(Node node);
+    public delegate void attack_finishedEventHandler(Node node);
 
-    public void Attack(double ship_y, double target_x, double target_y)
+    public void attack(double ship_y, double target_x, double target_y)
     {
         if (state != State.Wait) return;
         state = State.Top;
@@ -52,7 +52,7 @@ public partial class CSharpShip : Node
         {
             if (oldState != state)
             {
-                EmitSignal(SignalName.finished_attack, this);
+                EmitSignal(SignalName.attack_finished, this);
             }
             sprite.Position = start;
         }

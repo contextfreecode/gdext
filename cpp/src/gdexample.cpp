@@ -14,7 +14,7 @@ void CppShip::_bind_methods() {
     );
     // Position changed
     ADD_SIGNAL(g::MethodInfo(
-        "finished_attack", g::PropertyInfo(g::Variant::OBJECT, "node")
+        "attack_finished", g::PropertyInfo(g::Variant::OBJECT, "node")
     ));
     // Speed
     g::ClassDB::bind_method(g::D_METHOD("get_speed"), &CppShip::get_speed);
@@ -86,7 +86,7 @@ void CppShip::_process(double delta) {
     })();
     if (state == State::Wait) {
         if (old_state != state) {
-            emit_signal("finished_attack", this);
+            emit_signal("attack_finished", this);
         }
         position = start;
     }

@@ -29,7 +29,7 @@ impl RustShip {
     }
 
     #[signal]
-    fn finished_attack(node: Gd<Node>);
+    fn attack_finished(node: Gd<Node>);
 }
 
 #[godot_api]
@@ -84,7 +84,7 @@ impl INode2D for RustShip {
         if self.state == State::Wait && self.state != old_state {
             let other_self = self.base().clone();
             self.base_mut()
-                .emit_signal("finished_attack".into(), &[Variant::from(other_self)]);
+                .emit_signal("attack_finished".into(), &[Variant::from(other_self)]);
         }
     }
 

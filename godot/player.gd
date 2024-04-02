@@ -1,5 +1,5 @@
 class_name Player
-extends AnimatedSprite2D
+extends Node2D
 
 
 @export var speed := 550.0
@@ -19,6 +19,9 @@ func _process(delta: float):
 	elif Input.is_action_pressed("ui_right"):
 		animation_speed = 2.0
 		velocity = Vector2.RIGHT.rotated(rotation)
-	play("swim", animation_speed)
+	sprite.play("swim", animation_speed)
 	if velocity.length() > 0:
 		position += velocity * speed * delta
+
+
+@onready var sprite = $Sprite
