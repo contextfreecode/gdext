@@ -74,9 +74,16 @@ func read_tiles() -> Scenery.TileInfo:
 	return info
 
 
+func _on_player_area_entered(area: Area2D):
+	var parent := area.get_parent()
+	if &"ship" in parent.get_groups():
+		animation_player.play("fade")
+		get_tree().paused = true
+
+
 # The "null" default is for testing emit without args.
 func _on_ship_attack_finished(node: Node = null):
-	print("Ship finished: ", node, ", ", node == $Ships/RustShip)
+	print("Ship finished: ", node)
 
 
 func schedule_attacks(rng: RandomNumberGenerator):
@@ -103,6 +110,8 @@ var finished_ships: Array[Node]
 var waiting_ships: Array[Node]
 var zig_sprite_old_x := INF
 
+@onready var animation_player := $AnimationPlayer as AnimationPlayer
+
 # Work around trouble sending signals from Zig.
-@onready var zig_ship = $Ships/ZigShip
-@onready var zig_sprite = $Ships/ZigShip/Sprite
+@onready var zig_ship = $Actors/Ships/ZigShip
+@onready var zig_sprite = $Actors/Ships/ZigShip/Sprite

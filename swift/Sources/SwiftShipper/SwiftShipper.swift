@@ -3,7 +3,7 @@ import SwiftGodot
 #initSwiftExtension(cdecl: "swift_entry_point", types: [SwiftShip.self])
 
 @Godot
-class SwiftShip: Node {
+class SwiftShip: Node2D {
     @Export(.range, "0,2000,100")
     var speed: Double = 500.0
 

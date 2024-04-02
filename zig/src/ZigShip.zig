@@ -3,8 +3,8 @@ const Vector2 = Godot.Vector2;
 
 const Self = @This();
 
-pub usingnamespace Godot.Node;
-godot_object: *Godot.Node,
+pub usingnamespace Godot.Node2D;
+godot_object: *Godot.Node2D,
 
 speed: f32 = 500,
 
@@ -343,7 +343,7 @@ pub fn emit_signal_self(self: *Self, signal_: anytype) GlobalEnums.Error {
         signal_name = StringName.initFromLatin1Chars(@as([*c]const u8, &signal_[0]));
     }
     const name_arg = Godot.Variant.init(*Godot.StringName, &signal_name);
-    const self_arg = Godot.Variant.init(*Godot.Node, self.godot_object);
+    const self_arg = Godot.Variant.init(*Godot.Node2D, self.godot_object);
     const args = [_]GDE.GDExtensionConstVariantPtr{ &name_arg, &self_arg };
     Godot.objectMethodBindCall(
         emit_signal_method,

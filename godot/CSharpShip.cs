@@ -1,7 +1,7 @@
 using System;
 using Godot;
 
-public partial class CSharpShip : Node
+public partial class CSharpShip : Node2D
 {
     [Export(PropertyHint.Range, "0,2000,100")]
     public float Speed = 500;

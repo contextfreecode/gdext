@@ -12,8 +12,8 @@ enum class State {
     Exit,
 };
 
-class CppShip : public godot::Node {
-    GDCLASS(CppShip, godot::Node)
+class CppShip : public godot::Node2D {
+    GDCLASS(CppShip, godot::Node2D)
 
   private:
     double speed = 500.0;
