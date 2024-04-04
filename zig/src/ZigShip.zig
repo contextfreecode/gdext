@@ -123,22 +123,6 @@ const GDE = Godot.GDE;
 // var emit_signal_str: Godot.StringName = undefined;
 var emit_signal_method: GDE.GDExtensionMethodBindPtr = undefined;
 
-fn emit(self: *Self, signal: Godot.StringName) void {
-    var ret: Godot.Variant = undefined;
-    var err: GDE.GDExtensionCallError = undefined;
-    const name_arg = Godot.Variant.init(*Godot.StringName, @constCast(&signal));
-    const self_arg = Godot.Variant.init(*Self, @ptrCast(self.godot_object));
-    const args = [_]*const Godot.Variant{ &name_arg, &self_arg };
-    Godot.objectMethodBindCall(
-        emit_signal_method,
-        self,
-        @ptrCast(&args),
-        args.len,
-        &ret,
-        &err,
-    );
-}
-
 const GlobalEnums = Godot.GlobalEnums;
 const Object = Godot.Object;
 const String = Godot.String;

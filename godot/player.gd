@@ -18,14 +18,14 @@ func _process(delta: float):
 	var animation_speed = 1.0
 	var velocity := Vector2.ZERO
 	if Input.is_action_pressed("ui_up"):
-		velocity = Vector2.UP.rotated(rotation)
+		velocity = Vector2.UP
 	elif Input.is_action_pressed("ui_down"):
-		velocity = Vector2.DOWN.rotated(rotation)
+		velocity = Vector2.DOWN
 	elif Input.is_action_pressed("ui_left"):
-		velocity = Vector2.LEFT.rotated(rotation)
+		velocity = Vector2.LEFT
 	elif Input.is_action_pressed("ui_right"):
 		animation_speed = 2.0
-		velocity = Vector2.RIGHT.rotated(rotation)
+		velocity = Vector2.RIGHT
 	sprite.play("swim", animation_speed)
 	if velocity.length() > 0:
 		position += velocity * speed * delta
